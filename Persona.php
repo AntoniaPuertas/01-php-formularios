@@ -25,5 +25,32 @@ class Persona {
     // Propiedades
     private $nombre;
     private $edad;
+    // Constructor
+    public function __construct($nombre, $edad) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
 
+    // Métodos
+    public function saludar() {
+        return "Hola, mi nombre es " . $this->nombre . " y tengo " . $this->edad . " años.";
+    }
+
+    // Getters
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    public function getEdad() {
+        return $this->edad;
+    }
+
+    // Setters
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function setEdad($edad) {
+        $this->edad = $edad;
+    }
 }
