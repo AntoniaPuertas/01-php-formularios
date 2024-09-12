@@ -52,20 +52,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si no hay errores, procesar los datos
     if (empty($errores)) {
         echo "<h2>Datos del formulario:</h2>";
-        echo "<p><strong>Nombre:</strong> " . htmlspecialchars($_POST["nombre"]) . "</p>";
-        echo "<p><strong>Dirección:</strong> " . htmlspecialchars($_POST["direccion"]) . "</p>";
-        echo "<p><strong>Correo:</strong> " . htmlspecialchars($_POST["correo"]) . "</p>";
+        echo "<p><strong>Nombre:</strong> " . sanitize_input($_POST["nombre"]) . "</p>";
+        echo "<p><strong>Dirección:</strong> " . sanitize_input($_POST["direccion"]) . "</p>";
+        echo "<p><strong>Correo:</strong> " . sanitize_input($_POST["correo"]) . "</p>";
         echo "<p><strong>Contraseña:</strong> [Oculta por seguridad]</p>";
-        echo "<p><strong>Antigüedad:</strong> " . htmlspecialchars($_POST["fecha"]) . "</p>";
-        echo "<p><strong>Color elegido:</strong> " . (isset($_POST["eligeColor"]) ? htmlspecialchars($_POST["eligeColor"]) : "No seleccionado") . "</p>";
-        echo "<p><strong>Comentarios:</strong> " . htmlspecialchars($_POST["comentarios"]) . "</p>";
+        echo "<p><strong>Antigüedad:</strong> " . sanitize_input($_POST["fecha"]) . "</p>";
+        echo "<p><strong>Color elegido:</strong> " . (isset($_POST["eligeColor"]) ? sanitize_input($_POST["eligeColor"]) : "No seleccionado") . "</p>";
+        echo "<p><strong>Comentarios:</strong> " . sanitize_input($_POST["comentarios"]) . "</p>";
         echo "<p><strong>Aceptó políticas:</strong> Sí</p>";
     } else {
         // Si hay errores, mostrarlos
         echo "<h2>Errores en el formulario:</h2>";
         echo "<ul>";
         foreach ($errores as $error) {
-            echo "<li>" . htmlspecialchars($error) . "</li>";
+            echo "<li>" . sanitize_input($error) . "</li>";
         }
         echo "</ul>";
         echo "<p><a href='javascript:history.back()'>Volver al formulario</a></p>";
